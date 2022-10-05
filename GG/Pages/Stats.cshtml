@@ -1,0 +1,59 @@
+﻿@page
+@model GG.Pages.StatsModel
+
+@{
+    ViewData["Title"] = "Stats";
+}
+
+<h1>Game Stats</h1>
+
+@*<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Sport[0].sportName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sport[0].description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Sport) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.sportName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>*@
+<div class="row">
+    <div class="col">
+@foreach(var item in Model.Sport){
+            <span class="header" style="font-weight:700;margin-top:20px">@Html.DisplayFor(modelItem=>item.sportName)</span>
+            <ul class="list-group" style="margin-bottom:20px">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                 Games hosted
+                    <span class="badge badge-primary badge-pill" style="background-color:forestgreen;color:white;">@item.playgrounds.Count</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                 Players Joined
+                  <span class="badge badge-primary badge-pill" style="background-color:forestgreen;color:white;">@item.players.Count</span>
+                </li>
+    </ul>
+}
+    </div>
+    <div class="col">
+        <img style="margin-left:20%;margin-top:15%" src="/Images/stats.jpg" width="400px" height="500px" />
+    </div>
+</div>
